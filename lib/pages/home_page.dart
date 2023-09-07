@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/Cubits/Weather_cubit.dart';
-import 'package:weather_app/Cubits/Weather_states.dart';
+import 'package:provider/provider.dart';
+import 'package:weather_app/Models/weather_model.dart';
+import 'package:weather_app/Providers/Weather_cubit.dart';
+import 'package:weather_app/Providers/Weather_states.dart';
+import 'package:weather_app/Providers/theme_notifier.dart';
 import 'package:weather_app/pages/search_page.dart';
 import '../widgets/Weather_Sucess_Widget.dart';
 import '../widgets/Weather_failed_widget.dart';
 import '../widgets/Weather_initial_widget.dart';
 
 // ignore: must_be_immutable
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -48,3 +52,7 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+/*
+ Provider.of<ThemeNotifier>(context, listen: false).primarySwatch =
+             Colors.red;
+ */

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/Cubits/Weather_cubit.dart';
+import 'package:provider/provider.dart';
+import 'package:weather_app/Providers/Weather_cubit.dart';
+import 'package:weather_app/Providers/theme_notifier.dart';
 
 import '../Models/weather_model.dart';
 
@@ -13,8 +15,8 @@ class WeatherSucessWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
-      
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -26,7 +28,6 @@ class WeatherSucessWidget extends StatelessWidget {
           end: Alignment.bottomCenter,
         ),
       ),
-      
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -71,7 +72,5 @@ class WeatherSucessWidget extends StatelessWidget {
         ],
       ),
     );
-    
   }
-  
 }

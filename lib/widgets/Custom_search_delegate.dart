@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/Cubits/Weather_cubit.dart';
+import 'package:provider/provider.dart';
+import 'package:weather_app/Providers/Weather_cubit.dart';
+import 'package:weather_app/Providers/theme_notifier.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   final List<String> searchItems = [
@@ -40,9 +42,20 @@ class CustomSearchDelegate extends SearchDelegate {
     return [
       IconButton(
         onPressed: () async {
-          BlocProvider.of<WeatherCubit>(context).getweather(cityname: query);
+          //should use async to finsih all the functions and tasks included in that line then transfer to the next line
+          await BlocProvider.of<WeatherCubit>(context)
+              .getweather(cityname: query);
           BlocProvider.of<WeatherCubit>(context).cityname = query;
 
+          if (searchItems.contains(query)) {
+            Provider.of<ThemeNotifier>(context, listen: false).primarySwatch =
+                BlocProvider.of<WeatherCubit>(context)
+                    .weatherModel!
+                    .getthemecolor();
+          } else {
+            Provider.of<ThemeNotifier>(context, listen: false).primarySwatch =
+                Colors.red;
+          }
           Navigator.pop(context);
           Navigator.pop(context);
         },

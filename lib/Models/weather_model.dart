@@ -7,6 +7,7 @@ class WeatherModel {
   double mintemp;
   String weatherstatename;
   String icon;
+  MaterialColor? color;
   WeatherModel({
     required this.date,
     required this.temp,
@@ -19,7 +20,7 @@ class WeatherModel {
   factory WeatherModel.fromJson(dynamic data) {
     var forcastdata = data["forecast"]["forecastday"][0]['day'];
     return WeatherModel(
-        date: DateTime.parse(data["location"]["localtime"]),
+        date: DateTime.now(),
         temp: forcastdata['avgtemp_c'],
         maxtemp: forcastdata['maxtemp_c'],
         mintemp: forcastdata['mintemp_c'],
