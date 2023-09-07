@@ -14,10 +14,12 @@ class WeatherService {
         Uri.parse('$baseUrl/forecast.json?key=$apikey&q=$cityname&days=7');
 
     http.Response response = await http.get(url);
+   
     if (response.statusCode == 200) {
       Map<String, dynamic> data = jsonDecode(response.body);
 
       weatherModel = WeatherModel.fromJson(data);
+
       return weatherModel;
     } else {
       throw Exception('thers an error with stauts code${response.statusCode}');

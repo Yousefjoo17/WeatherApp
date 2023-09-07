@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
-import 'package:weather_app/Models/weather_model.dart';
 import 'package:weather_app/Providers/Weather_cubit.dart';
 import 'package:weather_app/Providers/Weather_states.dart';
-import 'package:weather_app/Providers/theme_notifier.dart';
 import 'package:weather_app/pages/search_page.dart';
 import '../widgets/Weather_Sucess_Widget.dart';
 import '../widgets/Weather_failed_widget.dart';
@@ -41,6 +38,7 @@ class HomePage extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (state is WeatherSuccess) {
+            print(BlocProvider.of<WeatherCubit>(context).weatherModel);
             return WeatherSucessWidget(weatherdata: state.weatherModel);
           } else if (state is WeatherFailure) {
             return const WeatherFailureWidget();
@@ -52,7 +50,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-/*
- Provider.of<ThemeNotifier>(context, listen: false).primarySwatch =
-             Colors.red;
- */

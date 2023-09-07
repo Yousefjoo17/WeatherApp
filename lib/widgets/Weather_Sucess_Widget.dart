@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 import 'package:weather_app/Providers/Weather_cubit.dart';
-import 'package:weather_app/Providers/theme_notifier.dart';
-
 import '../Models/weather_model.dart';
 
 class WeatherSucessWidget extends StatelessWidget {
@@ -46,7 +43,7 @@ class WeatherSucessWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.network(
-                'https:${weatherdata!.icon}',
+                'http:${weatherdata!.icon}',
                 height: 100,
                 width: 100,
                 fit: BoxFit.cover,
